@@ -10,39 +10,34 @@
                   <div class="card-header"><h3 class="text-center font-weight-light my-4">Create
                     Account</h3></div>
                   <div class="card-body">
-                    <form>
+                    <form @submit.prevent="handleSubmit">
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputFirstName" type="text"
-                                   placeholder="Enter your first name"/>
-                            <label for="inputFirstName">First name</label>
+                            <input class="form-control" v-model="name" id="inputFirstName" type="text"
+                                   placeholder="Enter your name"/>
+                            <label for="inputFirstName">Name</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-floating">
-                            <input class="form-control" id="inputLastName" type="text"
-                                   placeholder="Enter your last name"/>
-                            <label for="inputLastName">Last name</label>
+                            <input class="form-control" v-model="email" id="inputEmail" type="email"
+                                   placeholder="name@example.com"/>
+                            <label for="inputEmail">Email address</label>
                           </div>
                         </div>
-                      </div>
-                      <div class="form-floating mb-3">
-                        <input class="form-control" id="inputEmail" type="email"
-                               placeholder="name@example.com"/>
-                        <label for="inputEmail">Email address</label>
                       </div>
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputPassword" type="password"
+                            <input class="form-control" v-model="password" id="inputPassword" type="password"
                                    placeholder="Create a password"/>
                             <label for="inputPassword">Password</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" id="inputPasswordConfirm"
+                            <input class="form-control" v-model="password_confirm" id="inputPasswordConfirm"
                                    type="password" placeholder="Confirm password"/>
                             <label for="inputPasswordConfirm">Confirm Password</label>
                           </div>
@@ -50,9 +45,8 @@
                       </div>
                       <div class="mt-4 mb-0">
                         <div class="d-grid">
-                          <router-link class="btn btn-primary btn-block" to="/login">Create
-                            Account
-                          </router-link>
+                          <!--<a class="btn btn-primary btn-block">Create Account</a>-->
+                          <button class="btn btn-primary btn-block">Create Account</button>
                         </div>
                       </div>
                     </form>
@@ -73,8 +67,32 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name: "Register"
+  name: "Register",
+  data(){
+    return {
+      name: '',
+      email: '',
+      password: '',
+      password_confirm: ''
+    }
+  },
+  methods: {
+    async handleSubmit(){
+      const data = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+        password_confirm: this.password_confirm
+      };
+
+      const response = await axios.post('register',data);
+      this.$router.push('/login');
+
+    }
+  }
 };
 </script>
 
