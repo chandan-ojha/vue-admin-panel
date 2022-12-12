@@ -87,10 +87,8 @@ export default {
         password: this.password,
         password_confirm: this.password_confirm
       };
-
-      const response = await axios.post('register',data);
+      await axios.post('register',data);
       this.$router.push('/login');
-
     }
   }
 };
