@@ -12,6 +12,7 @@
                   </div>
                   <div class="card-body">
                     <form @submit.prevent="handleSubmit">
+                      <error v-if="error" :error="error"/>
                       <div class="form-floating mb-3">
                         <input class="form-control" v-model="email" id="inputEmail" type="email" placeholder="name@example.com"/>
                         <label for="inputEmail">Email address</label>
@@ -51,26 +52,39 @@
 
 <script>
 import axios from "axios";
+import Error from "./Error.vue";
+
 export default {
   name: "Login",
+  components: {Error},
+
   data(){
     return{
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
   },
   methods:{
     async handleSubmit(){
-      const data = {
-        email: this.email,
-        password: this.password
-      };
-      const response = await axios.post('login',data);
-      localStorage.setItem('token',response.data.token)
-      console.log(response)
+      try {
+        const data = {
+          email: this.email,
+          password: this.password
+        };
+
+        const response = await axios.post('login', data);
+        localStorage.setItem('token', response.data.token);
+        this.$router.push('/');
+      }
+      catch(e)
+      {
+        this.error = 'Invalid email/password!'
+      }
     }
   }
 };
+
 </script>
 
 <style scoped>
