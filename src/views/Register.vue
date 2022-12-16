@@ -11,6 +11,7 @@
                     Account</h3></div>
                   <div class="card-body">
                     <form @submit.prevent="handleSubmit">
+                      <message v-if="message.value" :message="message"/>
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
@@ -68,28 +69,58 @@
 
 <script>
 import axios from "axios";
+import Message from "./Message.vue";
 
 export default {
   name: "Register",
+  components: {Message},
   data(){
     return {
       name: '',
       email: '',
       password: '',
-      password_confirm: ''
+      password_confirm: '',
+      message:{
+        value: '',
+        type: ''
+      }
     }
   },
   methods: {
     async handleSubmit(){
-      const data = {
-        name: this.name,
-        email: this.email,
-        password: this.password,
-        password_confirm: this.password_confirm
+      try {
+        const data = {
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          password_confirm: this.password_confirm
       };
-      await axios.post('register',data);
-      this.$router.push('/login');
+       const response = await axios.post('register',data);
+
+        if(response.data.status_code === 200)
+        {
+          this.message = {
+            value: response.data.message,
+            type: 'success'
+          };
+          setTimeout(()=>{
+            this.$router.push('/login');
+          }, 2000)
+        }
+
+        else
+        {
+          this.message = {
+            value: response.data.message,
+            type: 'danger'
+          };
+        }  
     }
+    catch(e)
+    {
+      this.error = 'Bad Request !'
+    }
+  }
   }
 };
 </script>

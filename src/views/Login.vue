@@ -52,17 +52,20 @@
 
 <script>
 import axios from "axios";
-import Error from "./Error.vue";
+import Message from "./Message.vue";
 
 export default {
   name: "Login",
-  components: {Error},
+  components: {Message},
 
   data(){
     return{
       email: '',
       password: '',
-      error: ''
+      message:{
+        value: '',
+        type: ''
+      }
     }
   },
   methods:{
@@ -72,8 +75,18 @@ export default {
           email: this.email,
           password: this.password
         };
+         const response = await axios.post('login', data);
 
-        const response = await axios.post('login', data);
+         if(response.data.status_code === 200)
+         {
+           this.message = {
+             value: response.data.message,
+             type: 'success'
+           };
+           setTimeout(()=>{
+             this.$router.push('/');
+           }, 2000)
+         }
         localStorage.setItem('token', response.data.token);
         this.$router.push('/');
       }
