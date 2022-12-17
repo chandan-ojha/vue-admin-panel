@@ -1,7 +1,7 @@
 <script setup>
 //import { RouterLink, RouterView } from 'vue-router'
-import {computed} from "vue";
-import {useRoute} from "vue-router";
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 
 import LayoutContent from "@/layouts/LayoutContent.vue";
 import LayoutBlank from "@/layouts/LayoutBlank.vue";

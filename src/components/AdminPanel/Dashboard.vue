@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <Chart/>
+    <Chart />
   </div>
 </template>
 

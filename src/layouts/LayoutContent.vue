@@ -1,15 +1,15 @@
 <template>
   <div class="sb-nav-fixed">
-    <NavBar/>
+    <NavBar />
     <div id="layoutSidenav">
-      <SideNav/>
+      <SideNav />
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid px-4">
-            <slot/>
+            <slot />
           </div>
         </main>
-        <Footer/>
+        <Footer />
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@ import Footer from "@/components/AdminPanel/Footer.vue";
 
 export default {
   name: "LayoutContent",
-  components: {Footer, NavBar, SideNav},
+  components: { Footer, NavBar, SideNav }
 };
 </script>
 

@@ -12,17 +12,19 @@
                   </div>
                   <div class="card-body">
                     <form @submit.prevent="handleSubmit">
-                      <error v-if="error" :error="error"/>
+                      <message v-if="message.value" :message="message" />
                       <div class="form-floating mb-3">
-                        <input class="form-control" v-model="email" id="inputEmail" type="email" placeholder="name@example.com"/>
+                        <input class="form-control" v-model="email" id="inputEmail" type="email"
+                               placeholder="name@example.com" />
                         <label for="inputEmail">Email address</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <input class="form-control" v-model="password" id="inputPassword" type="password" placeholder="Password"/>
+                        <input class="form-control" v-model="password" id="inputPassword" type="password"
+                               placeholder="Password" />
                         <label for="inputPassword">Password</label>
                       </div>
                       <div class="form-check mb-3">
-                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value=""/>
+                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                         <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                       </div>
                       <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
@@ -51,53 +53,42 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 import Message from "./Message.vue";
 
 export default {
   name: "Login",
-  components: {Message},
-
-  data(){
-    return{
-      email: '',
-      password: '',
-      message:{
-        value: '',
-        type: ''
+  components: { Message },
+  data() {
+    return {
+      email: "",
+      password: "",
+      message: {
+        value: "",
+        type: ""
       }
-    }
+    };
   },
-  methods:{
-    async handleSubmit(){
+  methods: {
+    async handleSubmit() {
       try {
         const data = {
           email: this.email,
           password: this.password
         };
-         const response = await axios.post('login', data);
+        const response = await axios.post("login", data);
 
-         if(response.data.status_code === 200)
-         {
-           this.message = {
-             value: response.data.message,
-             type: 'success'
-           };
-           setTimeout(()=>{
-             this.$router.push('/');
-           }, 2000)
-         }
-        localStorage.setItem('token', response.data.token);
-        this.$router.push('/');
-      }
-      catch(e)
-      {
-        this.error = 'Invalid email/password!'
+        if (response.data.status_code === 200) {
+          this.$router.push("/");
+        }
+        //localStorage.setItem("token", response.data.token);
+      } catch (e) {
+        this.message.value = "Invalid email/password!";
+        this.message.type = "danger";
       }
     }
   }
 };
-
 </script>
 
 <style scoped>

@@ -1,13 +1,13 @@
 <template>
-    <div class="alert" :class="`alert-${message.type}`" role="alert">
-       {{message.value}}
-    </div>
+  <div class="alert" :class="`alert-${message.type}`" role="alert">
+    {{ message.value }}
+  </div>
 </template>
 
 <script>
 export default {
   name: "Message",
-  props: ['message']
+  props: ["message"]
 };
 </script>
 
