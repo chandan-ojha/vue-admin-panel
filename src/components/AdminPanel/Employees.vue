@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "@/axios";
 
 export default {
   name: "Employees",
@@ -29,7 +29,7 @@ export default {
     return { employee_list: undefined };
   },
   mounted() {
-    axios.get("http://admin-panel-api.test/api/get-employee-list-test")
+    axios.get("get-employee-list-test")
       .then((response) => {
         this.employee_list = response.data.employee_list;
       });
