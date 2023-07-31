@@ -7,10 +7,8 @@
 <script>
 export default {
   name: "Message",
-  props: ["message"]
+  props: ["message"],
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

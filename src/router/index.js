@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 import Dashboard from "@/components/AdminPanel/Dashboard.vue";
 
 const router = createRouter({
@@ -10,7 +10,7 @@ const router = createRouter({
       component: Dashboard,
       meta: {
         layout: "content",
-      }
+      },
     },
     {
       path: "/login",
@@ -33,9 +33,9 @@ const router = createRouter({
       component: () => import("../components/AdminPanel/Employees.vue"),
       meta: {
         layout: "content",
-      }
-    }
-  ]
-})
+      },
+    },
+  ],
+});
 
-export default router
+export default router;

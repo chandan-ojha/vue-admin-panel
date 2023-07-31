@@ -18,15 +18,25 @@
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" v-model="name" id="inputFirstName" type="text"
-                                   placeholder="Enter your name" />
+                            <input
+                              class="form-control"
+                              v-model="name"
+                              id="inputFirstName"
+                              type="text"
+                              placeholder="Enter your name"
+                            />
                             <label for="inputFirstName">Name</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-floating">
-                            <input class="form-control" v-model="email" id="inputEmail" type="email"
-                                   placeholder="name@example.com" />
+                            <input
+                              class="form-control"
+                              v-model="email"
+                              id="inputEmail"
+                              type="email"
+                              placeholder="name@example.com"
+                            />
                             <label for="inputEmail">Email address</label>
                           </div>
                         </div>
@@ -34,15 +44,25 @@
                       <div class="row mb-3">
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" v-model="password" id="inputPassword" type="password"
-                                   placeholder="Create a password" />
+                            <input
+                              class="form-control"
+                              v-model="password"
+                              id="inputPassword"
+                              type="password"
+                              placeholder="Create a password"
+                            />
                             <label for="inputPassword">Password</label>
                           </div>
                         </div>
                         <div class="col-md-6">
                           <div class="form-floating mb-3 mb-md-0">
-                            <input class="form-control" v-model="password_confirm" id="inputPasswordConfirm"
-                                   type="password" placeholder="Confirm password" />
+                            <input
+                              class="form-control"
+                              v-model="password_confirm"
+                              id="inputPasswordConfirm"
+                              type="password"
+                              placeholder="Confirm password"
+                            />
                             <label for="inputPasswordConfirm">
                               Confirm Password
                             </label>
@@ -91,8 +111,8 @@ export default {
       password_confirm: "",
       message: {
         value: "",
-        type: ""
-      }
+        type: "",
+      },
     };
   },
   methods: {
@@ -102,14 +122,14 @@ export default {
           name: this.name,
           email: this.email,
           password: this.password,
-          password_confirm: this.password_confirm
+          password_confirm: this.password_confirm,
         };
         const response = await axios.post("register", data);
 
         if (response.data.status_code === 200) {
           this.message = {
             value: response.data.message,
-            type: "success"
+            type: "success",
           };
           setTimeout(() => {
             this.$router.push("/login");
@@ -117,17 +137,15 @@ export default {
         } else {
           this.message = {
             value: response.data.message,
-            type: "danger"
+            type: "danger",
           };
         }
       } catch (e) {
         this.error = "Bad Request !";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

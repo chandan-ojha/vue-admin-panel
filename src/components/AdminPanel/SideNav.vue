@@ -26,10 +26,8 @@
 
 <script>
 export default {
-  name: "SideNav"
+  name: "SideNav",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

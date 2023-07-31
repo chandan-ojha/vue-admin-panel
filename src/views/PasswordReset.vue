@@ -19,10 +19,17 @@
                     </div>
                     <form>
                       <div class="form-floating mb-3">
-                        <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                        <input
+                          class="form-control"
+                          id="inputEmail"
+                          type="email"
+                          placeholder="name@example.com"
+                        />
                         <label for="inputEmail">Email address</label>
                       </div>
-                      <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                      <div
+                        class="d-flex align-items-center justify-content-between mt-4 mb-0"
+                      >
                         <router-link class="small" to="/login">
                           Return to login
                         </router-link>
@@ -51,10 +58,8 @@
 
 <script>
 export default {
-  name: "PasswordReset"
+  name: "PasswordReset",
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

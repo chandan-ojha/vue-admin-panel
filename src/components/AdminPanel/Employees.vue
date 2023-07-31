@@ -29,16 +29,17 @@ export default {
     return { employee_list: undefined };
   },
   mounted() {
-    axios.get("get-employee-list-test")
-      .then((response) => {
-        this.employee_list = response.data.employee_list;
-      });
-  }
+    axios.get("get-employee-list-test").then((response) => {
+      this.employee_list = response.data.employee_list;
+    });
+  },
 };
 </script>
 
 <style scoped>
-table, td, th {
+table,
+td,
+th {
   border: 1px solid #ddd;
   text-align: left;
 }
@@ -48,7 +49,8 @@ table {
   width: 100%;
 }
 
-th, td {
+th,
+td {
   padding: 5px;
 }
 </style>

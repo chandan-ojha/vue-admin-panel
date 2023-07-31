@@ -27,10 +27,8 @@
 
 <script>
 export default {
-name: "Chart"
-}
+  name: "Chart",
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

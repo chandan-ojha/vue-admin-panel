@@ -22,10 +22,8 @@ import Footer from "@/components/AdminPanel/Footer.vue";
 
 export default {
   name: "LayoutContent",
-  components: { Footer, NavBar, SideNav }
+  components: { Footer, NavBar, SideNav },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

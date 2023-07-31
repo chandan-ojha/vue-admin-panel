@@ -14,20 +14,41 @@
                     <form @submit.prevent="handleSubmit">
                       <message v-if="message.value" :message="message" />
                       <div class="form-floating mb-3">
-                        <input class="form-control" v-model="email" id="inputEmail" type="email"
-                               placeholder="name@example.com" />
+                        <input
+                          class="form-control"
+                          v-model="email"
+                          id="inputEmail"
+                          type="email"
+                          placeholder="name@example.com"
+                        />
                         <label for="inputEmail">Email address</label>
                       </div>
                       <div class="form-floating mb-3">
-                        <input class="form-control" v-model="password" id="inputPassword" type="password"
-                               placeholder="Password" />
+                        <input
+                          class="form-control"
+                          v-model="password"
+                          id="inputPassword"
+                          type="password"
+                          placeholder="Password"
+                        />
                         <label for="inputPassword">Password</label>
                       </div>
                       <div class="form-check mb-3">
-                        <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
-                        <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
+                        <input
+                          class="form-check-input"
+                          id="inputRememberPassword"
+                          type="checkbox"
+                          value=""
+                        />
+                        <label
+                          class="form-check-label"
+                          for="inputRememberPassword"
+                          >Remember Password</label
+                        >
                       </div>
-                      <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                      <div
+                        class="d-flex align-items-center justify-content-between mt-4 mb-0"
+                      >
                         <router-link class="small" to="/password">
                           Forgot Password?
                         </router-link>
@@ -65,8 +86,8 @@ export default {
       password: "",
       message: {
         value: "",
-        type: ""
-      }
+        type: "",
+      },
     };
   },
   methods: {
@@ -74,7 +95,7 @@ export default {
       try {
         const data = {
           email: this.email,
-          password: this.password
+          password: this.password,
         };
         const response = await axios.post("login", data);
 
@@ -86,11 +107,9 @@ export default {
         this.message.value = "Invalid email/password!";
         this.message.type = "danger";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
