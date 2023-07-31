@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <footer class="py-4 bg-light mt-auto">
     <div class="container-fluid px-4">
@@ -7,11 +9,5 @@
     </div>
   </footer>
 </template>
-
-<script>
-export default {
-  name: "Footer",
-};
-</script>
 
 <style scoped></style>

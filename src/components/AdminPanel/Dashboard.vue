@@ -1,3 +1,7 @@
+<script setup>
+import Chart from "./Chart.vue";
+</script>
+
 <template>
   <div>
     <h1 class="mt-4">Dashboard</h1>
@@ -61,13 +65,5 @@
     <Chart />
   </div>
 </template>
-
-<script>
-import Chart from "./Chart.vue";
-export default {
-  name: "Dashboard",
-  components: { Chart },
-};
-</script>
 
 <style scoped></style>

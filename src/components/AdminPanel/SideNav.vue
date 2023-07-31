@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div id="layoutSidenav_nav">
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -23,11 +25,5 @@
     </nav>
   </div>
 </template>
-
-<script>
-export default {
-  name: "SideNav",
-};
-</script>
 
 <style scoped></style>

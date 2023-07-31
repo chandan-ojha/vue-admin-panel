@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div class="row">
     <div class="col-xl-6">
@@ -24,11 +26,5 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "Chart",
-};
-</script>
 
 <style scoped></style>

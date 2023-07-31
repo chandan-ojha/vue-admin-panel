@@ -1,3 +1,73 @@
+<script setup>
+import axios from "@/axios";
+import { reactive } from "vue";
+import { useRouter } from "vue-router";
+import Message from "./Message.vue";
+
+let email = "";
+let password = "";
+let message = reactive({
+  value: "",
+  type: "",
+});
+
+const router = useRouter();
+
+const handleSubmit = async () => {
+  try {
+    const data = {
+      email,
+      password,
+    };
+    const response = await axios.post("login", data);
+
+    if (response.data.status_code === 200) {
+      router.push("/");
+    }
+    //localStorage.setItem("token", response.data.token);
+  } catch (e) {
+    message.value = "Invalid email/password!";
+    message.type = "danger";
+  }
+};
+
+//~ Options API
+
+/**export default {
+  name: "Login",
+  components: { Message },
+  data() {
+    return {
+      email: "",
+      password: "",
+      message: {
+        value: "",
+        type: "",
+      },
+    };
+  },
+  methods: {
+    async handleSubmit() {
+      try {
+        const data = {
+          email: this.email,
+          password: this.password,
+        };
+        const response = await axios.post("login", data);
+
+        if (response.data.status_code === 200) {
+          this.$router.push("/");
+        }
+        //localStorage.setItem("token", response.data.token);
+      } catch (e) {
+        this.message.value = "Invalid email/password!";
+        this.message.type = "danger";
+      }
+    },
+  },
+}; **/
+</script>
+
 <template>
   <div class="bg-primary">
     <div id="layoutAuthentication">
@@ -11,8 +81,8 @@
                     <h3 class="text-center font-weight-light my-4">Login</h3>
                   </div>
                   <div class="card-body">
-                    <form @submit.prevent="handleSubmit">
-                      <message v-if="message.value" :message="message" />
+                    <form @submit.prevent="handleSubmit()">
+                      <Message v-if="message.value" :message="message" />
                       <div class="form-floating mb-3">
                         <input
                           class="form-control"
@@ -30,6 +100,7 @@
                           id="inputPassword"
                           type="password"
                           placeholder="Password"
+                          autocomplete="off"
                         />
                         <label for="inputPassword">Password</label>
                       </div>
@@ -72,44 +143,5 @@
     </div>
   </div>
 </template>
-
-<script>
-import axios from "@/axios";
-import Message from "./Message.vue";
-
-export default {
-  name: "Login",
-  components: { Message },
-  data() {
-    return {
-      email: "",
-      password: "",
-      message: {
-        value: "",
-        type: "",
-      },
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      try {
-        const data = {
-          email: this.email,
-          password: this.password,
-        };
-        const response = await axios.post("login", data);
-
-        if (response.data.status_code === 200) {
-          this.$router.push("/");
-        }
-        //localStorage.setItem("token", response.data.token);
-      } catch (e) {
-        this.message.value = "Invalid email/password!";
-        this.message.type = "danger";
-      }
-    },
-  },
-};
-</script>
 
 <style scoped></style>

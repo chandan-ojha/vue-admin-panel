@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
@@ -56,11 +58,5 @@
     </ul>
   </nav>
 </template>
-
-<script>
-export default {
-  name: "NavBar",
-};
-</script>
 
 <style scoped></style>

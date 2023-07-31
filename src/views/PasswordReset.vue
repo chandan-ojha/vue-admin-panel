@@ -1,3 +1,5 @@
+<script setup></script>
+
 <template>
   <div class="bg-primary">
     <div id="layoutAuthentication">
@@ -55,11 +57,5 @@
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  name: "PasswordReset",
-};
-</script>
 
 <style scoped></style>

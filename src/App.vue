@@ -23,6 +23,4 @@ const layoutResolver = computed(() => {
   </component>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

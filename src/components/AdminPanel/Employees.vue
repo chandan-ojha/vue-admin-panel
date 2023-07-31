@@ -1,3 +1,30 @@
+<script setup>
+import { onMounted, ref } from "vue";
+import axios from "@/axios";
+
+let employee_list = ref("");
+
+onMounted(() => {
+  axios.get("get-employee-list-test").then((response) => {
+    employee_list.value = response.data.employee_list;
+  });
+});
+
+//~ Options API
+
+/** export default {
+  name: "Employees",
+  data() {
+    return { employee_list: undefined };
+  },
+  mounted() {
+    axios.get("get-employee-list-test").then((response) => {
+      this.employee_list = response.data.employee_list;
+    });
+  },
+}; **/
+</script>
+
 <template>
   <div>
     <h1>Employee List</h1>
@@ -19,22 +46,6 @@
     </table>
   </div>
 </template>
-
-<script>
-import axios from "@/axios";
-
-export default {
-  name: "Employees",
-  data() {
-    return { employee_list: undefined };
-  },
-  mounted() {
-    axios.get("get-employee-list-test").then((response) => {
-      this.employee_list = response.data.employee_list;
-    });
-  },
-};
-</script>
 
 <style scoped>
 table,
